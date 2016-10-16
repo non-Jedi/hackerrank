@@ -1,5 +1,9 @@
 # Hackerrank
 
+## Profile
+
+[My hackerrank profile.](https://www.hackerrank.com/nonJedi)
+
 ## Purpose
 
 Practice programming skills using the challenges on hackerrank.com. The
