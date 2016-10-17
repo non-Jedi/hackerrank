@@ -1,9 +1,9 @@
 #!/bin/python3
 
-t = int(input().strip())
+t = int(input())
 cases = [0]*t
 for i in range(t):
-    cases[i] = input().strip()
+    cases[i] = input()
 
 def next_perm(string):
     '''Starting from the end of a string with length n, finds the first
@@ -21,8 +21,15 @@ def next_perm(string):
     where the sorted values exclude x(j).'''
 
     end = [string[-1]]
-    for index, char in reversed(string):
-        if char <= string[-index-2]:
-            end.append(string[-index-2])
+    for index, char in enumerate(reversed(string[:-1])):
+        if char >= string[-1-index]:
+            end.append(char)
         else:
-            output = string[:-index-2] + end.pop(end.index(min([i for i in end if i > string[-index-2]]))) + ''.join(sorted(end))
+            output = string[:-2-index]
+            output += end.pop(end.index(min([i for i in end if i > char])))
+            output += ''.join(sorted(end + [char]))
+            return output
+    return 'no answer'
+
+for c in cases:
+    print(next_perm(c))
